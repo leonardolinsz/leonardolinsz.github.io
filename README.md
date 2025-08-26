@@ -32,7 +32,19 @@
 
 ###
 
-<p align="left">```bash<br><br># Clone o projeto<br>$ git clone https://github.com/Vireya-Hydrocore/hydrocore-api.git<br><br>```</p>
+```bash
+
+# Clone o projeto
+$ git clone https://github.com/Vireya-Hydrocore/hydrocore-api.git
+
+```
+
+###
+
+<h2 align="left">👤 Responsáveis pelo projeto</h2>
+
+- [@Daniel Severo](https://github.com/DanielTogSevero)
+- [@Leonardo Lins](https://github.com/leonardolinsz)
 
 ###
 
