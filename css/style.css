@@ -177,8 +177,7 @@ main {
   max-width: var(--fixed-width);
 }
 .review {
-  background: var(--clr-white);
-  padding: 1.5rem 2rem;
+  background: white;  
   border-radius: var(--radius);
   box-shadow: var(--light-shadow);
   transition: var(--transition);
