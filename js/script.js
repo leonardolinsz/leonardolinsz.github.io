@@ -1,50 +1,54 @@
-const reviews = [
-  {
-    id: 1,
-    name: 'susan smith',
-    job: 'web developer',
-    img: 'https://www.course-api.com/images/people/person-1.jpeg',
-    text: "I'm baby meggings twee health goth +1. Bicycle rights tumeric chartreuse before they sold out chambray pop-up. Shaman humblebrag pickled coloring book salvia hoodie, cold-pressed four dollar toast everyday carry",
-  },
-  {
-    id: 2,
-    name: 'anna johnson',
-    job: 'web designer',
-    img: 'https://www.course-api.com/images/people/person-2.jpeg',
-    text: 'Helvetica artisan kinfolk thundercats lumbersexual blue bottle. Disrupt glossier gastropub deep v vice franzen hell of brooklyn twee enamel pin fashion axe.photo booth jean shorts artisan narwhal.',
-  },
-];
-// select items
-const img = document.getElementById('person-img');
-const author = document.getElementById('author');
+async function get() {
+  const response = await fetch("https://pokeapi.co/api/v2/pokemon");
+  const data = await response.json();
+  let array_pokemon = data.results;
+
+  let pokemon = await Promise.all(
+    array_pokemon.map(async (poke) => {
+      // extrai o ID do URL
+      let id = poke.url.split("/")[6];
+      // busca a foto
+      let img = await get_foto(id);
+
+      return {
+        nome: poke.name,
+        url: poke.url,
+        img: img
+      };
+    })
+  );
+
+  console.log(pokemon);
+  return pokemon;
+}
+
+async function get_foto(id) {
+  const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+  const data = await response.json();
+  return data.sprites.front_default;
+}
+
+let reviews = [];
+let currentItem = 0;
+
 const job = document.getElementById('job');
 const info = document.getElementById('info');
+const image = document.getElementById('person-img')
 
 const prevBtn = document.querySelector('.prev-btn');
 const nextBtn = document.querySelector('.next-btn');
-const randomBtn = document.querySelector('.random-btn');
 
-// set starting item
-let currentItem = 0;
-
-// load initial item
-window.addEventListener('DOMContentLoaded', function () {
-  const item = reviews[currentItem];
-  img.src = item.img;
-  author.textContent = item.name;
-  job.textContent = item.job;
-  info.textContent = item.text;
+window.addEventListener('DOMContentLoaded', async function () {
+  reviews = await get();
+  showPerson(currentItem);
 });
 
-// show person based on item
 function showPerson(person) {
   const item = reviews[person];
-  img.src = item.img;
-  author.textContent = item.name;
-  job.textContent = item.job;
-  info.textContent = item.text;
+  info.textContent = `Nome: ${item.nome}`;
+  image.src = item.img
 }
-// show next person
+
 nextBtn.addEventListener('click', function () {
   currentItem++;
   if (currentItem > reviews.length - 1) {
@@ -52,18 +56,11 @@ nextBtn.addEventListener('click', function () {
   }
   showPerson(currentItem);
 });
-// show prev person
+
 prevBtn.addEventListener('click', function () {
   currentItem--;
   if (currentItem < 0) {
     currentItem = reviews.length - 1;
   }
-  showPerson(currentItem);
-});
-// show random person
-randomBtn.addEventListener('click', function () {
-  console.log('hello');
-
-  currentItem = Math.floor(Math.random() * reviews.length);
   showPerson(currentItem);
 });
