@@ -24,7 +24,7 @@
 
 ###
 
-<p align="left">📦 carroselDeRevisões<br> ┣ 📂 js<br> ┃ ┣ 📄 script.js<br> ┣ 📂 css<br> ┃ ┣ 📄 style.css<br> ┣ 📂 img<br> ┣ 📄 README.md<br> ┣ 📄 index.html<br> ┣ 📄 LICENSE</p>
+<p align="left">📦 carroselDeRevisões<br> ┣ 📂 js<br> ┃ ┣ 📄 script.js<br> ┣ 📂 css<br> ┃ ┣ 📄 style.css<br> ┣ 📄 README.md<br> ┣ 📄 index.html<br> ┣ 📄 LICENSE</p>
 
 ###
 
