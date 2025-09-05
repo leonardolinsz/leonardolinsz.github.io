@@ -35,7 +35,7 @@
 ```bash
 
 # Clone o projeto
-$ git clone https://github.com/Vireya-Hydrocore/hydrocore-api.git
+$ git clone https://github.com/leonardolinsz/leonardolinsz.github.io.git
 
 ```
 
